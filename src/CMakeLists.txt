@@ -1,14 +1,9 @@
-set(SOURCE_FILES
-    complex.cpp
-)
-add_library(complex ${SOURCE_FILES})
+add_library(complex complex.cpp)
 
-set(TEST_FILES
-    complex_main.cpp
-)
+add_executable(complex_test complex_test.cpp)
+target_link_libraries(complex_test complex)
+add_test(NAME src/complex_test COMMAND complex_test)
 
-add_executable(tests ${TEST_FILES})
-# Linking up all libraries
-target_link_libraries(tests complex)
-
-add_test(NAME example_test COMMAND tests)
+add_executable(complex2_test complex2_test.cpp)
+target_link_libraries(complex2_test complex)
+add_test(NAME src/complex2_test COMMAND complex2_test)
